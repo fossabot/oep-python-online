@@ -10,7 +10,6 @@ require("skulpt");
 require("blob");
 var FileSaver = require("file-saver");
 require("bootstrap");
-require("font-awesome-webpack");
 
 // Load CSS files
 import './style.css';
