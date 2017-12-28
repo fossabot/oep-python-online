@@ -8,18 +8,19 @@
 
 # How to install
 
-1. Clone the repository locally:
+1. Clone the repository locally:  
     `git clone https://github.com/Free-Polito/fare-python-online.git`
-2. Install the dependencies:
+2. Install the dependencies:  
     `npm install`
-3. Create the `bundle.js` file:
+3. Create the `bundle.js` file:  
     `npm run build`
-4. Open the HTML file `farePython.html` in a browser.
+4. Open the HTML file `index.html` in a browser.  
 5. Enjoy!
 
 
+
 # Author
-libremente
+libremente:  
 surf [AT] libremente [DOT] eu
 
 
