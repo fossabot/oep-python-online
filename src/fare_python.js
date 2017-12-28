@@ -82,7 +82,14 @@ $(function(){
         myPromise.then(function(mod) {
             // Success case         
             toggleVisibility(gres, bres);
-            resultArea.innerText = "Risultato: \n" + resultArea.innerText;
+            // Check if result is blank
+            if(resultArea.innerHTML === ""){
+                resultArea.innerHTML = "Sembra che non ci sia nulla in output.\n"+
+                    "Controlla di avere almeno una <i>print</i>!";
+            }
+            else{
+                resultArea.innerText = "Risultato: \n" + resultArea.innerText;
+            }
             errorLineMarked = "";
        },
         function(err) {
