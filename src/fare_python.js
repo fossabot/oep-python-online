@@ -133,7 +133,6 @@ $(function(){
       var prelude = "# Nome: Programma\n# Autore:www.fare.polito.it\n#" +
         "Descrizione: aggiungi qui la descrizione\n"; 
       var text = prelude + editor.getValue();
-      console.log(text);
 
       var filename = "Programma"; 
       var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
