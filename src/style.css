@@ -1,0 +1,16 @@
+/* File: style.css
+ * Author: libremente
+ * Description: extra styling 
+ */
+
+.CodeMirror {
+  border-radius: 25px;
+  border: 1px solid #b6afafe6;
+}
+
+.line-error {
+  background: #FBC2C4 !important;
+  color: #8a1f11 !important;
+}
+
+
