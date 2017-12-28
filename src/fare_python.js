@@ -47,8 +47,9 @@ $(function(){
     // Button event handler
     document.getElementById("btn-runit").onclick = runit;
     document.getElementById("btn-save").onclick = save;
+    document.getElementById("btn-clean").onclick = clean;
     
-    // Function to run Skulpt called by the "run" button in the HTML
+       // Function to run Skulpt called by the "run" button in the HTML
     function runit() { 
         
         // Check if there is a line marked
@@ -73,32 +74,20 @@ $(function(){
            return Sk.importMainWithBody("<stdin>", false, prog, true);
         });
 
+        // Vars for the results.
+        var gres = $('#goodresult');
+        var bres = $('#badresult');
+ 
         // Promise 'then'
         myPromise.then(function(mod) {
             // Success case         
+            toggleVisibility(gres, bres);
             resultArea.innerText = "Risultato: \n" + resultArea.innerText;
             errorLineMarked = "";
-
-            // Refactor this!
-            var gres = $('#goodresult');
-            var bres = $('#badresult');
-            if(gres.is(":hidden")){
-                gres.show(); 
-            }
-            if(bres.is(":visible")){
-                bres.hide();  
-            }
-        },
+       },
         function(err) {
             // Error case
-            var gres = $('#goodresult');
-            var bres = $('#badresult');
-            if(bres.is(":hidden")){
-                bres.show(); 
-            }
-            if(gres.is(":visible")){
-                gres.hide();  
-            }
+            toggleVisibility(bres, gres);
             var error = err.toString();
             // Get "line #" from error
             var regExp = /line [0-9]/;
@@ -126,6 +115,20 @@ $(function(){
        });
     } 
 
+    // Function to toggle the visibility of the messages.
+    function toggleVisibility(toShow, toHide){
+       if(toShow.is(":hidden")){
+            toShow.show(); 
+        }
+        if(toHide.is(":visible")){
+            toHide.hide();  
+        }
+    }
+
+    // Function to clear the input
+    function clean(){
+        editor.setValue("# Inserire il codice sorgente.\n");
+    }
 
     // Function save to save the file
     function save(){ 
