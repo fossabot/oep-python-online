@@ -18,6 +18,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Load python.js file
 import 'codemirror/mode/python/python.js';
+import 'codemirror/addon/edit/matchbrackets.js';
+import 'codemirror/addon/edit/closebrackets.js';
 
 // Wait for jQuery
 $(function(){
@@ -28,7 +30,9 @@ $(function(){
     var area = document.getElementById("pythonInput");
     var editor = CodeMirror.fromTextArea(area, {
         lineNumbers: true,
-        mode: "python"
+        mode: "python",
+        matchBrackets: true,
+        autoCloseBrackets: true
     });
 
     // Function to style the output of Skulpt 
