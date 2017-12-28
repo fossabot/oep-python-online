@@ -12,8 +12,10 @@
     `git clone https://github.com/Free-Polito/fare-python-online.git`
 2. Install the dependencies:
     `npm install`
-3. Open the HTML file `farePython.html` in a browser.
-4. Enjoy!
+3. Create the `bundle.js` file:
+    `npm run build`
+4. Open the HTML file `farePython.html` in a browser.
+5. Enjoy!
 
 
 # Author
