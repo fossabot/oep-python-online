@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Removing VIM swp files
+*.swp
+
+# Removing webpack bundle.js
+bundle.js
