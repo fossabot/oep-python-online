@@ -4,8 +4,8 @@
  */
 
 .CodeMirror {
-  border-radius: 25px;
-  border: 1px solid #b6afafe6;
+  border-radius: .25rem;
+  border: 1px solid #007BFF;
 }
 
 .line-error {
