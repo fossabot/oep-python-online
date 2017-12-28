@@ -10,7 +10,7 @@
 
   <div class="container">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark rounded">
-        <a class="navbar-brand" href="#">FARE Python Online</a>
+        <a class="navbar-brand" href="index.html">FARE Python Online</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarsFARE" aria-controls="navbarsFARE"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +29,11 @@
                   class="btn btn-warning" ><i class="fa fa-floppy-o"></i>
                   Salva</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="btn-clean" role="button"
+                  class="btn btn-warning" ><i class="fa fa-floppy-o"></i>
+                  Pulisci</a>
+            </li>
           </ul>
           <li class="nav-item">
               <a class="nav-link" href="#">Aiuto</a>
@@ -38,7 +43,7 @@
     
     <!-- Alerts -->
     <!-- Refactor this! Call them via JS! -->
-    <div class="row mx-auto bd-example p-3">
+    <div class="row mx-auto bd-example mt-3">
       <div id="goodresult" class="alert alert-success w-100"
           style="display:none;" role="alert">
         Programma senza errori! Controlla il risultato.
@@ -50,15 +55,15 @@
     </div>
 
     <!-- Main Zone -->
-    <div class="row" style="margin-top:2%;">
+    <div class="row mt-3">
       <!-- Input -->
-      <div class="col-sm">
+      <div class="col">
         <form> 
           <textarea id="pythonInput"># Inserire il codice sorgente.&#13;&#10;</textarea>
         </form>
       <!-- Output -->
       </div>
-      <div class="col-sm" style="border:1px solid #d4edda; border-radius: 5%;">
+      <div class="col mr-3 rounded border border-success">
         <div id="pythonOutput" ></div>         
       </div>
     </div>
