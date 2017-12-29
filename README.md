@@ -31,12 +31,12 @@ The project uses web-pack.
 Here is what you should do in order to contribute:
 
 1. Create a Github account if you don't already have one.
-2. Create a Fork of the Skulpt repository -- This will make a clone of the
+2. Create a Fork of this repository -- This will make a clone of the
    repository in your account.  **DO NOT** directly clone this one.  Once
-   you've made the fork you will clone the forked version in your account to
+   you've made the fork you will clone the forked version to
    your local machine for development.
 3. Check the Trello list for something to do.
-4. Follow the instructions above to get the dev environment ready building.
+4. Follow the instructions above to get the dev environment ready.
 5. Fix or add your own features.  Commit and push to your forked version of the
    repository.  When everything is tested and ready to be incorporated into the
    master version make a pull request via GitHub.   
