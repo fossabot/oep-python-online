@@ -1,4 +1,4 @@
-This project follows the [Contributors
+This project follows the [Contributor
 Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 Here is what you should do in order to contribute:
@@ -17,6 +17,9 @@ Here is what you should do in order to contribute:
 
 Usual git workflow:
 1. ` git clone <your_forked_repo>`
+   If the repo is already forked please remember to sync it with the upstream
+   repo. Check [this](https://help.github.com/articles/syncing-a-fork) to know
+   how to do it.
 2. Resolve the dependencies with `npm install`
 3. Build the `bundle.js` with `npm run build`
 4. Make your mods
@@ -28,3 +31,4 @@ Usual git workflow:
 This will make your mods available in your newly forked repo.
 Once everything is ready, create pull request upstream (against this original
 repo).
+
