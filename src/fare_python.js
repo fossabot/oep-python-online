@@ -12,14 +12,14 @@ var FileSaver = require("file-saver");
 require("bootstrap");
 
 // Load CSS files
-import './style.css';
-import 'codemirror/lib/codemirror.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+require ('./style.css');
+require ('codemirror/lib/codemirror.css');
+require ('bootstrap/dist/css/bootstrap.min.css');
 
 // Load python.js file
-import 'codemirror/mode/python/python.js';
-import 'codemirror/addon/edit/matchbrackets.js';
-import 'codemirror/addon/edit/closebrackets.js';
+require ('codemirror/mode/python/python.js');
+require ('codemirror/addon/edit/matchbrackets.js');
+require ('codemirror/addon/edit/closebrackets.js');
 
 // Wait for jQuery
 $(function(){
