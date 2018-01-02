@@ -139,6 +139,8 @@ $(function(){
     // Function to clear the input
     function clean(){
         editor.setValue("# Inserire il codice sorgente.\n");
+        $("#goodresult, #badresult").hide();
+        $("#pythonOutput").html("");
     }
 
     // Function save to save the file
