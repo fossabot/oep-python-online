@@ -1,6 +1,7 @@
 # FARE Python Online
 [![Build Status](https://travis-ci.org/Free-Polito/fare-python-online.svg?branch=master)](https://travis-ci.org/Free-Polito/fare-python-online)
-[![conduct][https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square]][http://contributor-covenant.org/version/1/4/]
+
+[![conduct](https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square)](http://contributor-covenant.org/version/1/4/)
 ## What
 
 FARE Python Online is a web application to run Python through a web browser.
