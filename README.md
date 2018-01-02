@@ -1,5 +1,5 @@
 # FARE Python Online
-
+[![Build Status](https://travis-ci.org/Free-Polito/fare-python-online.svg?branch=master)](https://travis-ci.org/Free-Polito/fare-python-online)
 ## What
 
 FARE Python Online is a web application to run Python through a web browser.
