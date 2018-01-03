@@ -32,7 +32,8 @@ This project uses a set of libraries as depicted below:
 * Tether
 * Blob
 * File-saver 
-* Webpack
+* Webpack  
+
 Their relative licenses are listed below.
 
 #### Third Party Licensing
