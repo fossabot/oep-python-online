@@ -19,14 +19,6 @@ If errors occur a notice is shown and the relative line is underlined.
 4. Open the HTML file `dist/index.html` in a browser.  
 5. Enjoy!
 
-### Contributing
-This project follows the [Contributor
-Covenant](https://www.contributor-covenant.org/) code of conduct.
-
-For any request or problem file an issue on GitHub. 
-
-Please check `CONTRIBUTING.md` file to know how to contribute.
-
 ## Licensing
 The whole project is licensed under a GNU AGPL v3.0 license. See `LICENSE` file
 for more details. 
@@ -77,5 +69,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
 
-## Author and Maintainer
+## Contributing
+This project follows the [Contributor
+Covenant](https://www.contributor-covenant.org/) code of conduct.
+
+For any request or problem file an issue on GitHub. 
+
+Please check `CONTRIBUTING.md` file to know how to contribute.
+
+
+### Author and Maintainer
 libremente: <surf [AT] libremente [DOT] eu>
