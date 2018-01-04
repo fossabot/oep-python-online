@@ -2,7 +2,7 @@
   "name": "fare-python-online",
   "version": "0.1.0",
   "description": "Simple interface for Python Online.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
