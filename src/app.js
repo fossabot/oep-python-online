@@ -53,20 +53,24 @@ $(function () {
     autoCloseBrackets: true
   });
 
-  // Function to toggle the visibility of the messages.
-  function toggleVisibility (toShow, toHide) {
-    if (toShow.is(':hidden')) {
-      toShow.show();
-    }
-    if (toHide.is(':visible')) {
-      toHide.hide();
+  // Function to output messages.
+  function outputMessage (result, message) {
+    if (result === 'OK') {
+      $('#message').html(message);
+      $('#message').addClass('alert alert-success w-100')
+        .removeClass('alert-danger');
+    } else if (result === 'KO') {
+      $('#message').html(message);
+      $('#message').addClass('alert alert-danger w-100')
+        .removeClass('alert-success');
     }
   }
 
   // Function to clear the input
   function clean () {
     editor.setValue('# Inserire il codice sorgente.\n');
-    $('#goodresult, #badresult').hide();
+    $('#message').removeClass('alert alert-danger alert-success w-100')
+      .html('');
     $('#pythonOutput').html('');
   }
 
@@ -104,8 +108,6 @@ $(function () {
     var prog = editor.getValue();
     var resultArea = document.getElementById('pythonOutput');
     // Vars for the results.
-    var gres = $('#goodresult');
-    var bres = $('#badresult');
     var myPromise;
 
     // Check if there is a line marked
@@ -132,7 +134,7 @@ $(function () {
     myPromise.then(
       function () {
         // Success case
-        toggleVisibility(gres, bres);
+        outputMessage('OK', 'Programma senza errori! Controlla il risultato.');
         // Check if result is blank
         if (resultArea.innerHTML === '') {
           resultArea.innerHTML = 'Sembra che non ci sia nulla in output.\n'
@@ -158,7 +160,7 @@ $(function () {
         var defErrorText = '';
         var inputRegExp = /input/;
 
-        toggleVisibility(bres, gres);
+        outputMessage('KO', 'Il programma presenta errori! Correggili.');
 
         // Setting background color to red on the line with error
         while (editor.getLine(errorLineNumber) === null) {
