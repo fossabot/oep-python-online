@@ -94,15 +94,18 @@ $(function () {
   }
 
   // Function to output the result.
-  function outputResult (resArea) {
+  function outputResultSuccess (resArea) {
+    var result;
+
     if (!resArea) {
-      resArea = 'Sembra che non ci sia nulla in output.\n'
+      result = 'Sembra che non ci sia nulla in output.\n'
       + 'Controlla di avere almeno una print!';
     } else {
-      resArea = 'Risultato: \n' + resArea;
+      result = 'Risultato: \n' + resArea;
     }
     errorLineMarked = '';
-    return resArea;
+
+    return result;
   }
 
     // Function to read the file
@@ -113,6 +116,50 @@ $(function () {
     }
 
     return Sk.builtinFiles.files[x];
+  }
+
+  // Function to check illegal functions.
+  function checkLegal (line) {
+    var inputRegExp = /input/;
+
+    if (line.search(inputRegExp) !== -1) {
+      return true;
+    }
+
+    return false;
+  }
+
+
+  // Function to handle the error case.
+  function outputResultError (resultArea, errorMessage, sourceCode) {
+    // Grab the error line
+    var result = '';
+    var error = errorMessage.toString();
+    var regExp = /line [0-9]/;
+    var errorLine = error.substring(error.search(regExp),
+      error.length);
+    // Extract tokens array[0] = "line", array[1] = <my_number>
+    var errorArray = errorLine.split(' ');
+    var errorLineNumber
+          = Number(errorArray[1].replace(/(\r\n|\n|\r|\^)/gm, ''))
+          - 1;
+    var defErrorText = '';
+
+    // Setting background color to red on the line with error
+    while (sourceCode.getLine(errorLineNumber) === null) {
+      errorLineNumber -= errorLineNumber;
+    }
+    errorLineMarked = sourceCode.addLineClass(errorLineNumber,
+        'background', 'line-error');
+
+    if (checkLegal(sourceCode.getLine(errorLineNumber))) {
+      defErrorText = 'Forse hai utilizzato la funzione <input()> che '
+        + 'non è ancora supportata.\n';
+    }
+    defErrorText += 'Errore riscontrato nel codice a linea ';
+    result = defErrorText + (errorLineNumber + 1) + '.\n' + error;
+
+    return result;
   }
 
   // Function to run Skulpt called by the "run" button in the HTML
@@ -142,47 +189,19 @@ $(function () {
       return Sk.importMainWithBody('<stdin>', false, prog, true);
     });
 
-    // Promise 'then'
+    // Promise 'then'.
     myPromise.then(
       function () {
-        // Success case
+        // Success case.
         outputMessage('OK', 'Programma senza errori! Controlla il risultato.');
-        resultArea.innerText = outputResult(resultArea.innerText);
+        resultArea.innerText = outputResultSuccess(resultArea.innerText);
       },
 
       function (err) {
-        // Error case
-        var error = err.toString();
-        // Get "line #" from error
-        var regExp = /line [0-9]/;
-        var errorLine = error.substring(error.search(regExp),
-          error.length);
-        // Extract tokens array[0] = "line", array[1] = <my_number>
-        var errorArray = errorLine.split(' ');
-        var errorLineNumber
-              = Number(errorArray[1].replace(/(\r\n|\n|\r|\^)/gm, ''))
-              - 1;
-        var defErrorText = '';
-        var inputRegExp = /input/;
-
+        // Error case.
         outputMessage('KO', 'Il programma presenta errori! Correggili.');
-
-        // Setting background color to red on the line with error
-        while (editor.getLine(errorLineNumber) === null) {
-          errorLineNumber -= errorLineNumber;
-        }
-
-        errorLineMarked = editor.addLineClass(errorLineNumber,
-            'background', 'line-error');
-        // Check if illegal function are used as e.g. "input"
-        if (editor.getLine(errorLineNumber).search(inputRegExp) !== -1) {
-          defErrorText = 'Forse hai utilizzato la funzione <input()> che '
-            + 'non è ancora supportata.\n';
-        }
-        // Print error
-        defErrorText += 'Errore riscontrato nel codice a linea ';
-        resultArea.innerText = defErrorText + (errorLineNumber + 1)
-              + '.\n' + error;
+        resultArea.innerText = outputResultError(resultArea.innerText, err,
+          editor);
       });
   }
   // Button event handler
