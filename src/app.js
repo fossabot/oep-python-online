@@ -162,6 +162,14 @@ $(function () {
     return result;
   }
 
+  // Function to check line marked.
+  function checkLineMarked () {
+    // Check if there is a line marked
+    if (errorLineMarked !== '') {
+      editor.removeLineClass(errorLineMarked, 'background', 'line-error');
+    }
+  }
+
   // Function to run Skulpt called by the "run" button in the HTML
   function runit () {
     var prog = editor.getValue();
@@ -169,10 +177,7 @@ $(function () {
     // Vars for the results.
     var myPromise;
 
-    // Check if there is a line marked
-    if (errorLineMarked !== '') {
-      editor.removeLineClass(errorLineMarked, 'background', 'line-error');
-    }
+    checkLineMarked();
 
     resultArea.innerHTML = '';
     // Skulpt configuration
