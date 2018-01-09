@@ -86,11 +86,23 @@ $(function () {
     FileSaver.saveAs(blob, filename + '.py');
   }
 
-  // Function to style the output of Skulpt
+  // Function to style the output of Skulpt.
   function outf (text) {
     var resultArea = document.getElementById('pythonOutput');
 
     resultArea.innerHTML += text;
+  }
+
+  // Function to output the result.
+  function outputResult (resArea) {
+    if (!resArea) {
+      resArea = 'Sembra che non ci sia nulla in output.\n'
+      + 'Controlla di avere almeno una print!';
+    } else {
+      resArea = 'Risultato: \n' + resArea;
+    }
+    errorLineMarked = '';
+    return resArea;
   }
 
     // Function to read the file
@@ -135,14 +147,7 @@ $(function () {
       function () {
         // Success case
         outputMessage('OK', 'Programma senza errori! Controlla il risultato.');
-        // Check if result is blank
-        if (resultArea.innerHTML === '') {
-          resultArea.innerHTML = 'Sembra che non ci sia nulla in output.\n'
-          + 'Controlla di avere almeno una <i>print</i>!';
-        } else {
-          resultArea.innerText = 'Risultato: \n' + resultArea.innerText;
-        }
-        errorLineMarked = '';
+        resultArea.innerText = outputResult(resultArea.innerText);
       },
 
       function (err) {
