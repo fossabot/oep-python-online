@@ -44,6 +44,7 @@ $(function () {
   // Preliminary operations
   // Globals
   var errorLineMarked = '';
+  var pdfEnabled = false;
   // Enable CodeMirror
   var area = document.getElementById('pythonInput');
   var editor = CodeMirror.fromTextArea(area, {
@@ -84,13 +85,13 @@ $(function () {
   // Function to output messages.
   function outputMessage (result, message) {
     if (result === 'OK') {
-      $('#message').html(message);
       $('#message')
+        .html(message)
         .addClass('alert alert-success w-100')
         .removeClass('alert-danger');
     } else if (result === 'KO') {
-      $('#message').html(message);
       $('#message')
+        .html(message)
         .addClass('alert alert-danger w-100')
         .removeClass('alert-success');
     }
@@ -171,6 +172,32 @@ $(function () {
     return result;
   }
 
+  function openPdf () {
+    if (!pdfEnabled) {
+      // Creating div to prepend.
+      $('#main-zone').prepend(
+        $('<div><embed id="pdf" src="../files/example.pdf"></div>')
+        .attr('id', 'divPdf')
+        .addClass('col-md-8')
+      );
+      $('#pdf').css({
+        width: '750px',
+        height: '700px'
+      });
+      $('#main-col').append($('#divOutput'));
+      $('#divOutput').addClass('mt-3');
+      $('#divOutput').css('height', '300px');
+      $('#btn-pdf').text('Rimuovi libro');
+      pdfEnabled = true;
+    } else {
+      $('#divPdf').remove();
+      $('#main-zone').append($('#divOutput'));
+      $('#divOutput').removeClass('mt-3');
+      $('#btn-pdf').text('Sfoglia libro');
+      pdfEnabled = false;
+    }
+  }
+
   // Function to run Skulpt called by the "run" button in the HTML
   function runit () {
     var prog = editor.getValue();
@@ -210,8 +237,10 @@ $(function () {
           editor);
       });
   }
+
   // Button event handler
   document.getElementById('btn-runit').onclick = runit;
   document.getElementById('btn-save').onclick = save;
   document.getElementById('btn-clean').onclick = clean;
+  document.getElementById('btn-pdf').onclick = openPdf;
 });

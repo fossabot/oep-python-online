@@ -32,6 +32,11 @@
               <a class="nav-link btn" href="#" id="btn-clean"
                 role="button"><i class="fa fa-floppy-o"></i>Pulisci</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link btn" href="#" id="btn-pdf"
+                role="button"><i class="fa fa-floppy-o"></i>Sfoglia libro</a>
+            </li>
+ 
           </ul>
              <a class="nav-item nav-link" href="#">Aiuto</a>
         </div>
@@ -41,19 +46,18 @@
     <div id="message" class="row mx-auto bd-example mt-3"></div>
 
     <!-- Main Zone -->
-    <div class="row mt-3">
+    <div class="row mt-3" id="main-zone">
       <!-- Input -->
-      <div class="col">
+      <div class="col" id="main-col">
         <form> 
           <textarea id="pythonInput"># Inserire il codice sorgente.&#10;</textarea>
         </form>
-      <!-- Output -->
       </div>
-      <div class="col mr-3 rounded border border-success">
+      <!-- Output -->
+      <div id="divOutput" class="mr-3 col rounded border border-success" >
         <pre class="pre-scrollable" id="pythonOutput" ></pre>         
       </div>
     </div>
-  </div>
 
     <!-- Webpack loader -->
     <script src="bundle.js"></script>
