@@ -185,8 +185,9 @@ $(function () {
         height: '700px'
       });
       $('#main-col').append($('#divOutput'));
-      $('#divOutput').addClass('mt-3');
-      $('#divOutput').css('height', '300px');
+      $('#divOutput')
+        .addClass('mt-3')
+        .css('height', '300px');
       $('#btn-pdf').text('Rimuovi libro');
       pdfEnabled = true;
     } else {
