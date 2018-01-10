@@ -53,23 +53,11 @@ $(function () {
     autoCloseBrackets: true
   });
 
-  // Function to output messages.
-  function outputMessage (result, message) {
-    if (result === 'OK') {
-      $('#message').html(message);
-      $('#message').addClass('alert alert-success w-100')
-        .removeClass('alert-danger');
-    } else if (result === 'KO') {
-      $('#message').html(message);
-      $('#message').addClass('alert alert-danger w-100')
-        .removeClass('alert-success');
-    }
-  }
-
   // Function to clear the input
   function clean () {
     editor.setValue('# Inserire il codice sorgente.\n');
-    $('#message').removeClass('alert alert-danger alert-success w-100')
+    $('#message')
+      .removeClass('alert alert-danger alert-success w-100')
       .html('');
     $('#pythonOutput').html('');
   }
@@ -93,6 +81,20 @@ $(function () {
     resultArea.innerHTML += text;
   }
 
+  // Function to output messages.
+  function outputMessage (result, message) {
+    if (result === 'OK') {
+      $('#message').html(message);
+      $('#message')
+        .addClass('alert alert-success w-100')
+        .removeClass('alert-danger');
+    } else if (result === 'KO') {
+      $('#message').html(message);
+      $('#message')
+        .addClass('alert alert-danger w-100')
+        .removeClass('alert-success');
+    }
+  }
   // Function to output the result.
   function outputResultSuccess (resArea) {
     var result;
@@ -129,6 +131,13 @@ $(function () {
     return false;
   }
 
+  // Function to check line marked.
+  function checkLineMarked () {
+    // Check if there is a line marked
+    if (errorLineMarked !== '') {
+      editor.removeLineClass(errorLineMarked, 'background', 'line-error');
+    }
+  }
 
   // Function to handle the error case.
   function outputResultError (resultArea, errorMessage, sourceCode) {
@@ -160,14 +169,6 @@ $(function () {
     result = defErrorText + (errorLineNumber + 1) + '.\n' + error;
 
     return result;
-  }
-
-  // Function to check line marked.
-  function checkLineMarked () {
-    // Check if there is a line marked
-    if (errorLineMarked !== '') {
-      editor.removeLineClass(errorLineMarked, 'background', 'line-error');
-    }
   }
 
   // Function to run Skulpt called by the "run" button in the HTML
