@@ -62,3 +62,6 @@ typings/
 
 # Removing webpack bundle.js
 bundle.js
+
+# Removing files dir
+files/*
