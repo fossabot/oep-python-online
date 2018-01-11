@@ -65,7 +65,6 @@ $(function () {
 
   // Function save to save the file
   function save () {
-    // var text = $("#yourcode").val();
     var prelude = '# Nome: Programma\n# Autore:www.fare.polito.it\n#'
             + 'Descrizione: aggiungi qui la descrizione\n';
     var text = prelude + editor.getValue();
