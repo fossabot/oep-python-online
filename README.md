@@ -1,5 +1,5 @@
 # FARE Python Online
-[![Build Status](https://travis-ci.org/Free-Polito/fare-python-online.svg?branch=master)](https://travis-ci.org/Free-Polito/fare-python-online)
+[![Build Status](https://travis-ci.org/Free-Polito/fare-python-online.svg?branch=master)](https://travis-ci.org/Open-Education-Polito/oep-python-online)
 [![conduct](https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square)](http://contributor-covenant.org/version/1/4/)
 [![AGPL License](http://img.shields.io/badge/license-AGPL%20v3-red.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.en.html) 
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
