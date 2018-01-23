@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/goodparts src"
+    "lint": "node_modules/.bin/goodparts src",
+    "preinstall": "npm run lint",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
