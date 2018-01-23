@@ -15,7 +15,7 @@ If errors occur, a notice is shown and the relative line is underlined in red.
 ### How to install
 1. Download and unpack the latest release [here](https://github.com/Free-Polito/fare-python-online/releases)
 2. Install the dependencies:  
-   `npm install`
+   `npm install`  
    This will automagically also create the `bundle.js` file by running `npm run build`.
 3. If you want to use also the Python source code loading feature, remember to
    clone also the
