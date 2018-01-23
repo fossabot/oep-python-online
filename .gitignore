@@ -65,3 +65,6 @@ bundle.js
 
 # Removing files dir
 files/*
+
+# Removing programs
+dist/Programmi*

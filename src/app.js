@@ -74,6 +74,21 @@ $(function () {
     FileSaver.saveAs(blob, filename + '.py');
   }
 
+  // Function to load a Python file into the code area
+  function openPython (fileNumber) {
+    var xhttp = new XMLHttpRequest();
+    var filePath = 'Programmi_v3/' + fileNumber + '.py';
+
+    xhttp.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
+        editor.setValue(this.responseText);
+      }
+    };
+
+    xhttp.open('GET', filePath, true);
+    xhttp.send();
+  }
+
   // Function to style the output of Skulpt.
   function outf (text) {
     var resultArea = document.getElementById('pythonOutput');
@@ -243,4 +258,13 @@ $(function () {
   document.getElementById('btn-save').onclick = save;
   document.getElementById('btn-clean').onclick = clean;
   document.getElementById('btn-pdf').onclick = openPdf;
+  // Check which button has been fired
+  $('button').click(function () {
+    // eslint-disable-next-line no-invalid-this
+    var fired_button = $(this).val();
+
+    if (fired_button.indexOf('Modulo') !== -1) {
+      openPython(fired_button);
+    }
+  });
 });
