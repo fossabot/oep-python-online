@@ -22,9 +22,8 @@ If errors occur, a notice is shown and the relative line is underlined in red.
    It also runs the `postinstall.sh` BASH script which clones the
    [exercises](https://github.com/Open-Education-Polito/oep-esercizi-python)
    repository allowing to have the complete experience. 
-   repo.
-4. Open the HTML file `dist/index.html` in a browser.  
-5. Enjoy!
+3. Open the HTML file `dist/index.html` in a browser.  
+4. Enjoy!
 
 ## Licensing
 The whole project is licensed under a GNU AGPL v3.0 license. See `LICENSE` file
