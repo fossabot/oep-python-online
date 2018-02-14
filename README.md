@@ -12,6 +12,10 @@ It presents a menu and two columns, one for inserting the source code and the
 other one to see the results. 
 If errors occur, a notice is shown and the relative line is underlined in red.
 
+Furthermore, it is possible to read a PDF next to the input/output boxes. 
+It is also possible to directly insert some snippets of code in order to be
+able to test them straightaway. 
+
 ### How to install
 1. Download and unpack the latest release
    [here](https://github.com/Free-Polito/fare-python-online/releases)
@@ -87,6 +91,7 @@ Please check `CONTRIBUTING.md` file to know how to contribute.
 ## TODO
 * Refactor code into different files
 * Write consistent tests
+* Insert `config.json` and read from it 
 
 ### Author and Maintainer
 libremente: <surf [AT] libremente [DOT] eu>
