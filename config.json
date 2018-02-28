@@ -1,0 +1,8 @@
+{
+  "plugins" : {
+    "book" : false,
+    "turtle" : false,
+    "save" : true
+  }
+}
+
