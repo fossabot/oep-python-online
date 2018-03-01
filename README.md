@@ -129,7 +129,6 @@ Please check `CONTRIBUTING.md` file to know how to contribute.
 ## TODO
 * Refactor code into different files
 * Write consistent tests
-* Insert `config.json` and read from it 
 
 ### Author and Maintainer
 libremente: <surf [AT] libremente [DOT] eu>
