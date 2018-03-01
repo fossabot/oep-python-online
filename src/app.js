@@ -27,12 +27,16 @@ var Sk = require('skulpt');
 
 global.Tether = require('tether');
 require('blob');
-require('bootstrap');
 
 // Load CSS files
 require('./style.css');
 require('codemirror/lib/codemirror.css');
-require('bootstrap/dist/css/bootstrap.min.css');
+
+// eslint-disable-next-line no-undef
+if (typeof (fare) !== 'undefined' && fare === false) {
+  require('bootstrap');
+  require('bootstrap/dist/css/bootstrap.min.css');
+}
 
 // Load python.js file
 require('codemirror/mode/python/python.js');
@@ -42,7 +46,18 @@ require('codemirror/addon/edit/closebrackets.js');
 // Wait for jQuery
 $(function () {
   // Preliminary operations
-  // Globals
+  // Get variables from config.js
+  // eslint-disable-next-line no-undef
+  var book_var = book;
+  // eslint-disable-next-line no-undef
+  var save_var = saveit;
+  // eslint-disable-next-line no-undef
+  var ex_var = exercises;
+  // eslint-disable-next-line no-undef
+  var turtle_var = turtle;
+  // eslint-disable-next-line no-undef
+  var robot_var = robot;
+  // General purpose vars.
   var errorLineMarked = '';
   var pdfEnabled = false;
   // Enable CodeMirror
@@ -186,6 +201,39 @@ $(function () {
     return result;
   }
 
+  // Function to make a POST request to the REST API server
+  function postJS () {
+    var resultArea = document.getElementById('pythonOutput');
+    var http = new XMLHttpRequest();
+    // eslint-disable-next-line no-undef
+    var post_url = postUrl;
+
+    $('#frame').css('visibility', 'visible');
+    // Change URL
+    if (typeof (post_url) !== 'undefined') {
+      // Get textarea value
+      var params = editor.getValue();
+
+      http.open('POST', post_url, true);
+
+      // Send the proper header information along with the request
+      http.setRequestHeader(
+        'Content-type', 
+        'application/x-www-form-urlencoded'
+      );
+
+      http.onreadystatechange = function () {
+        if (http.readyState === 4 && http.status === 200) {
+          console.log(http.responseText);
+          resultArea.innerText += http.responseText;
+        }
+      };
+      http.send(params);
+    } else {
+      console.log('Configure proper url in the config.json file and rebuild');
+    }
+  }
+
   function openPdf () {
     if (!pdfEnabled) {
       // Creating div to prepend.
@@ -221,7 +269,6 @@ $(function () {
     var myPromise;
 
     checkLineMarked();
-
     resultArea.innerHTML = '';
     // Skulpt configuration
     Sk.pre = 'pythonOutput';
@@ -254,17 +301,81 @@ $(function () {
   }
 
   // Button event handler
+  // Standard ones
   document.getElementById('btn-runit').onclick = runit;
-  document.getElementById('btn-save').onclick = save;
   document.getElementById('btn-clean').onclick = clean;
-  document.getElementById('btn-pdf').onclick = openPdf;
-  // Check which button has been fired
-  $('button').click(function () {
-    // eslint-disable-next-line no-invalid-this
-    var fired_button = $(this).val();
 
-    if (fired_button.indexOf('Modulo') !== -1) {
-      openPython(fired_button);
+  // Depend on config. Have to add the es-linter exclusion rule
+  // eslint-disable-next-line no-undef
+  if (typeof (book_var) !== 'undefined') {
+    var btn_pdf = document.getElementById('btn-pdf');
+
+    // Check that element exists in the page.
+    if (btn_pdf !== null) {
+      if (book_var === true) {
+        btn_pdf.onclick = openPdf;
+      } else {
+        document.getElementById('btn-pdf').style.display = 'none';
+      }
     }
-  });
+  }
+
+  if (typeof (robot_var) !== 'undefined') {
+    var btn_post = document.getElementById('btn-post');
+    var div_camera = document.getElementById('camera-output');
+
+    if (btn_post !== null && div_camera !== null) {
+      if (robot_var === true) {
+        btn_post.onclick = postJS;
+      } else {
+        btn_post.style.display = 'none';
+        div_camera.style.display = 'none';
+      }
+    }
+  }
+
+  if (typeof (turtle_var) !== 'undefined') {
+    var div_turtle = document.getElementById('turtle-output');
+
+    if (div_turtle !== null) {
+      if (turtle_var === true) {
+        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+      } else {
+        div_turtle.style.display = 'none';
+      }
+    }
+  }
+
+
+  if (typeof (save_var) !== 'undefined') {
+    var btn_save = document.getElementById('btn-save');
+
+    if (btn_save !== null) {
+      if (save_var === true) {
+        btn_save.onclick = save;
+      } else {
+        btn_save.style.display = 'none';
+      }
+    }
+  }
+
+  if (typeof (ex_var) !== 'undefined') {
+    if (ex_var === true) {
+      // Check which button has been fired
+      $('button').click(function () {
+        // eslint-disable-next-line no-invalid-this
+        var fired_button = $(this).val();
+
+        if (fired_button.indexOf('Modulo') !== -1) {
+          openPython(fired_button);
+        }
+      });
+    } else {
+      var drop_down = document.getElementById('dropDown');
+
+      if (drop_down !== null) {
+        drop_down.style.display = 'none';
+      }
+    }
+  }
 });

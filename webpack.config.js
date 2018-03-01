@@ -27,7 +27,18 @@ module.exports = {
             // In case you imported plugins individually, you must also require them here:
             Util: "exports-loader?Util!bootstrap/js/dist/util",
             Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-      })
+      }),
+      // Defining variables to pass to app.js
+      new webpack.DefinePlugin({
+        "fare" : false,
+        "book": false,
+        "saveit" : false,
+        "exercises" : false,
+        "turtle" : false,
+        "robot" : true,
+        // Insert the server API endpoint
+        "postUrl" : JSON.stringify("xxx.xxx.xxx.xxx/python-online-server/api/post_file")
+      }),
     ],
 };
 
