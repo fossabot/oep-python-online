@@ -56,8 +56,20 @@ module.exports = {
                         join_vars: true
                     }
         }),
-        new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
+        //Merge chunks 
+        new webpack.optimize.AggressiveMergingPlugin(), 
 
+        // Defining variables to pass to app.js
+        new webpack.DefinePlugin({
+          "fare" : false,
+          "book": false,
+          "saveit" : false,
+          "exercises" : false,
+          "turtle" : false,
+          "robot" : true,
+          // Insert the server API endpoint
+          "postUrl" : JSON.stringify("xxx.xxx.xxx.xxx/python-online-server/api/post_file")
+        }),
     ],
 };
 

@@ -29,6 +29,44 @@ able to test them straightaway.
 3. Open the HTML file `dist/index.html` in a browser.  
 4. Enjoy!
 
+### Hacking
+Since this project has different purposes, it has been developed using JS
+without a specific framework (i.e., nodejs). This means that it may be a bit
+tricky to handle configuration. 
+In this case, custom configuration parameters are passed by means of the
+`webpack.config.js` file which is structured as follow:
+
+```javascript
+// Defining variables to pass to app.js
+plugins: [
+new webpack.DefinePlugin({
+  "fare" : false,
+  "book": false,
+  "saveit" : false,
+  "exercises" : false,
+  "turtle" : false,
+  "robot" : true,
+  // Insert the server API endpoint
+  "postUrl" : JSON.stringify("<a_api_endpoint_url>")
+}),
+]
+```
+so, each of those JSON elements is treated as a variable in the `app.js` file.
+This raises some problems (for example with the linter which has to be
+suppressed) but provides a sort of flexible way to handle configuration
+parameters for building. 
+
+For reference:
+* fare : if this project has to be included in the FARE Drupal module.
+* book: enable or not the possibility to toggle the PDF reader.
+* saveit: enable or not the possibility to save.
+* exercises: enable or not the possibility to load into the `input box` the
+  exercises read from the dedicated repo.
+* turtle: enable or not the turtle canvas output.
+* robot: enable or not the remote laboratory functionalities (todo). 
+* postUrl: an api endpoint url.
+
+
 ## Licensing
 The whole project is licensed under a GNU AGPL v3.0 license. See `LICENSE` file
 for more details. 
