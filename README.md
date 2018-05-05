@@ -1,7 +1,8 @@
 # FARE Python Online
 [![Build Status](https://travis-ci.org/Open-Education-Polito/oep-python-online.svg?branch=master)](https://travis-ci.org/Open-Education-Polito/oep-python-online)
 [![conduct](https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square)](http://contributor-covenant.org/version/1/4/)
-[![AGPL License](http://img.shields.io/badge/license-AGPL%20v3-red.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.en.html) 
+[![AGPL License](http://img.shields.io/badge/license-AGPL%20v3-red.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.en.html) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FOpen-Education-Polito%2Foep-python-online.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FOpen-Education-Polito%2Foep-python-online?ref=badge_shield)
+
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 [![Maintainability](https://api.codeclimate.com/v1/badges/6fd5305f516d8ecc8da1/maintainability)](https://codeclimate.com/github/Free-Polito/fare-python-online/maintainability)
 ## What
@@ -70,6 +71,9 @@ For reference:
 ## Licensing
 The whole project is licensed under a GNU AGPL v3.0 license. See `LICENSE` file
 for more details. 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FOpen-Education-Polito%2Foep-python-online.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FOpen-Education-Polito%2Foep-python-online?ref=badge_large)
 
 ### Dependencies
 This project uses a set of libraries as depicted below:
